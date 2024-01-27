@@ -6,10 +6,12 @@ namespace HW3_1
         private bool init = true;
         private int[][] array;
 
-        public JaggedArray(int input_rows, bool input_init = true)
+        public JaggedArray(int input_rows, string init_input="yes")
         {
             rows = input_rows;
-            init = input_init;
+            if (init_input == "no") {
+                init = false;
+            }
             array = new int[rows][];
         }
 

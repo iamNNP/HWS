@@ -7,11 +7,13 @@ namespace HW3_1
         private bool init = true;
         private int[,] array;
 
-        public MatrixArray(int input_rows, int input_columns, bool input_init = true)
+        public MatrixArray(int input_rows, int input_columns, string input_init="yes")
         {
             rows = input_rows;
             columns = input_columns;
-            init = input_init;
+            if (input_init == "no") {
+                init = false;
+            }
             array = new int[rows, columns];
         }
 

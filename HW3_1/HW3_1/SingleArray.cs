@@ -6,10 +6,12 @@ namespace HW3_1
         private bool init = true;
         private int[] array;
 
-        public SingleArray(int input_len, bool init_input = true)
+        public SingleArray(int input_len, string init_input="yes")
         {
             len = input_len;
-            init = init_input;
+            if (init_input == "no") {
+                init = false;
+            }
             array = new int[len];
         }
 
