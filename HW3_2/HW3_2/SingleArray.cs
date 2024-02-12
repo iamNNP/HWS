@@ -1,30 +1,40 @@
 namespace HW3_2
 {
-    public sealed class SingleArray : Array
+    public sealed class SingleArray : ArrayBase
     {
+        private int Len { get; set; }
         private int[] array;
-        public SingleArray(int len, string init) : base(len, init)
+        public SingleArray(string init, int len) : base(init)
         {
-            array = new int[base.Len];
+            Len = len;
+            array = new int[len];
+        }
+
+        public override void CreateByUser() {
+            string[] inputs = Console.ReadLine().Split(' ');
+            for (int i = 0; i < Len; i++)
+            {
+                array[i] = int.Parse(inputs[i]);
+            }
+        }
+
+        public override void CreateByRandom() {
+            Random rnd = new Random();
+            for (int i = 0; i < Len; i++)
+            {
+                array[i] = rnd.Next(0, 1000);
+            }
         }
 
         public void Create()
         {
             if (base.Init)
             {
-                string[] inputs = Console.ReadLine().Split(' ');
-                for (int i = 0; i < base.Len; i++)
-                {
-                    array[i] = int.Parse(inputs[i]);
-                }
+                CreateByUser();
             }
             else
             {
-                Random rnd = new Random();
-                for (int i = 0; i < base.Len; i++)
-                {
-                    array[i] = rnd.Next(0, 1000);
-                }
+                CreateByRandom();
             }
         }
 
@@ -46,7 +56,7 @@ namespace HW3_2
                 sum += array[i];
             }
             Console.WriteLine("Counted the average value of the array: ");
-            return (double)sum / (double)(base.Len);
+            return (double)sum / (double)(Len);
         }
     }
 }

@@ -1,42 +1,49 @@
 namespace HW3_2
 {
-    public sealed class MatrixArray : Array
+    public sealed class MatrixArray : ArrayBase
     {
-        public int Rows {  get; set; }
-        public int Columns { get; set; }
+        private int Rows {  get; set; }
+        private int Columns { get; set; }
         private int[,] array;
-        
-        public MatrixArray(int rows, int columns, int len, string init) : base(len, init)
+        public MatrixArray(string init, int rows, int columns) : base(init)
         {
             Rows = rows;
             Columns = columns;
             array = new int[rows, columns];
         }
 
+        public override void CreateByUser() {
+            for (int i = 0; i < Rows; i++)
+            {
+                string row = Console.ReadLine();
+                string[] array_row = row.Split(' ');
+                for (int j = 0; j < Columns; j++)
+                {
+                    array[i, j] = int.Parse(array_row[j]);
+                }
+            }
+        }
+
+        public override void CreateByRandom() {
+            Random rnd = new Random();
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    array[i, j] = rnd.Next(1, 100);
+                }
+            }
+        }
+
         public void Create()
         {
             if (base.Init)
             {
-                for (int i = 0; i < Rows; i++)
-                {
-                    string row = Console.ReadLine();
-                    string[] array_row = row.Split(' ');
-                    for (int j = 0; j < Columns; j++)
-                    {
-                        array[i, j] = int.Parse(array_row[j]);
-                    }
-                }
+                CreateByUser();
             }
             else
             {
-                Random rnd = new Random();
-                for (int i = 0; i < Rows; i++)
-                {
-                    for (int j = 0; j < Columns; j++)
-                    {
-                        array[i, j] = rnd.Next(1, 100);
-                    }
-                }
+                CreateByRandom();
             }
         }
 
@@ -65,7 +72,7 @@ namespace HW3_2
                 }
             }
             Console.WriteLine("Counted the average value of the array: ");
-            return (double)sum / (double)(base.Len);
+            return (double)sum / (double)(Rows * Columns);
         }
     }
 }

@@ -7,26 +7,14 @@ namespace HW3_2
     {
         static void Main(string[] args)
         {
-            Array[] arrays = new Array[14];
+            ArrayBase[] arrays = new ArrayBase[10];
             Random rnd = new Random();
-            SingleArray first_single_array = new SingleArray(rnd.Next(1, 11), "no");
-            first_single_array.Create();
-            arrays[0] = first_single_array;
-            int first_rows = rnd.Next(1, 11);
-            int first_cols = rnd.Next(1, 11);
-            MatrixArray first_matrix_array = new MatrixArray(first_rows, first_cols, first_rows * first_cols, "no");
-            first_matrix_array.Create();
-            arrays[1] = first_matrix_array;
-            int first_jagged_rows = rnd.Next(1, 11);
-            JaggedArray first_jagged_array = new JaggedArray(first_jagged_rows, "no");
-            first_jagged_array.Create();
-            arrays[2] = first_jagged_array;
-            for (int i = 3; i < arrays.Length; i++)
+            for (int i = 0; i < arrays.Length; i++)
             {
                 int num = rnd.Next(1, 4);
                 if (num == 1)
                 {
-                    SingleArray single_array = new SingleArray(rnd.Next(1, 11), "no");
+                    SingleArray single_array = new SingleArray("no", rnd.Next(1, 11));
                     single_array.Create();
                     arrays[i] = single_array;
                 }
@@ -34,14 +22,14 @@ namespace HW3_2
                 {
                     int rows = rnd.Next(1, 11);
                     int columns = rnd.Next(1, 11);
-                    MatrixArray matrix_array = new MatrixArray(rows, columns, rows * columns, "no");
+                    MatrixArray matrix_array = new MatrixArray("no", rows, columns);
                     matrix_array.Create();
                     arrays[i] = matrix_array;
                 }
                 if (num == 3)
                 {
                     int jagged_rows = rnd.Next(1, 11);
-                    JaggedArray jagged_array = new JaggedArray(jagged_rows, "no");
+                    JaggedArray jagged_array = new JaggedArray("no", jagged_rows);
                     jagged_array.Create();
                     arrays[i] = jagged_array;
                 }
