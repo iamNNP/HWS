@@ -8,9 +8,9 @@ namespace HW3_2
 
         public abstract double Average();
 
-        public abstract void CreateByRandom();
+        protected abstract void CreateByRandom();
 
-        public abstract void CreateByUser();
+        protected abstract void CreateByUser();
 
         public ArrayBase(string init)
         {

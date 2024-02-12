@@ -10,7 +10,7 @@ namespace HW3_2
             array = new int[len];
         }
 
-        public override void CreateByUser() {
+        protected override void CreateByUser() {
             string[] inputs = Console.ReadLine().Split(' ');
             for (int i = 0; i < Len; i++)
             {
@@ -18,7 +18,7 @@ namespace HW3_2
             }
         }
 
-        public override void CreateByRandom() {
+        protected override void CreateByRandom() {
             Random rnd = new Random();
             for (int i = 0; i < Len; i++)
             {
