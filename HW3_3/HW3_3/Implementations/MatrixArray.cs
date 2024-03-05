@@ -14,7 +14,7 @@ namespace HW3_3.Implementations
             array = new int[rows, columns];
         }
 
-        public override void CreateByUser() {
+        protected override void CreateByUser() {
             for (int i = 0; i < Rows; i++)
             {
                 string row = Console.ReadLine();
@@ -26,7 +26,7 @@ namespace HW3_3.Implementations
             }
         }
 
-        public override void CreateByRandom() {
+        protected override void CreateByRandom() {
             Random rnd = new Random();
             for (int i = 0; i < Rows; i++)
             {
