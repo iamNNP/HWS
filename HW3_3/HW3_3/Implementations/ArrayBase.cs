@@ -1,8 +1,10 @@
-namespace HW3_3
+using HW3_3.Interfaces;
+
+namespace HW3_3.Implementations
 {
     public abstract class ArrayBase : IArrayBase
     {
-        public bool Init { get; set; }
+        public bool Init { get; }
 
         public abstract void Print();
 
@@ -14,10 +16,11 @@ namespace HW3_3
 
         public ArrayBase(string init)
         {
-            Init = true;
-            if (init == "no")
+            if (init == "N")
             {
-                Init = false;
+                CreateByUser();
+            } else {
+                CreateByRandom();
             }
         }
     }

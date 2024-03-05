@@ -1,4 +1,6 @@
-namespace HW3_3
+using HW3_3.Interfaces;
+
+namespace HW3_3.Implementations
 {
     public sealed class SingleArray : ArrayBase, ISingleArray
     {
