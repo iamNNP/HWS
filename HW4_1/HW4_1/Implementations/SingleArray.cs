@@ -1,9 +1,10 @@
 using System.Collections;
+using System.ComponentModel;
 
 namespace HW3_4.Implementations
 {
     public sealed class SingleArray<T>
-        where T : IComparable<T>
+        where T : IComparable, IComparable<T>, IEquatable<T>
     {
         private const int DEFAULT_CAPACITY = 11;
         private T[] items;
@@ -102,6 +103,30 @@ namespace HW3_4.Implementations
             return true;
         }
 
+        public bool Contains(T item)
+        {
+            if (item == null)
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    if (items[i] == null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+            for (int i = 0; i < size; i++)
+            {
+                if (comparer.Equals(items[i], item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public T First(Func<T, bool> condition)
         {
             for (int i = 0; i < size; i++)
@@ -155,18 +180,107 @@ namespace HW3_4.Implementations
             }
             return min;
         }
-
-        public T Max()
+        public TResult Min<TResult>(Func<T, TResult> projector)
         {
-            T min = items[0];
-            for (int i = 1; i < size; i++)
+            Comparer<TResult> comparer = Comparer<TResult>.Default;
+            TResult min = projector(items[0]);
+            for (int i = 0; i < size; i++)
             {
-                if (min.CompareTo(items[i]) < 0)
+                var element = projector(items[i]);
+                if (comparer.Compare(min, element) > 0)
                 {
-                    min = items[i];
+                    min = element;
                 }
             }
             return min;
+        }
+
+        public T Max()
+        {
+            T max = items[0];
+            for (int i = 1; i < size; i++)
+            {
+                if (max.CompareTo(items[i]) < 0)
+                {
+                    max = items[i];
+                }
+            }
+            return max;
+        }
+
+        public TResult Max<TResult>(Func<T, TResult> projector)
+        {
+            Comparer<TResult> comparer = Comparer<TResult>.Default;
+            TResult max = projector(items[0]);
+            for (int i = 0; i < size; i++)
+            {
+                var element = projector(items[i]);
+                if (comparer.Compare(max, element) < 0)
+                {
+                    max = element;
+                }
+            }
+            return max;
+        }
+
+        public void Sort()
+        {
+            for (int i = 0; i < size - 1; i++)
+            {
+                for (int j = 0; j < size - i - 1; j++)
+                {
+                    if (items[j].CompareTo(items[j + 1]) > 0)
+                    {
+                        T temp = items[j];
+                        items[j] = items[j + 1];
+                        items[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        public TResult[] Project<TResult>(Func<T, TResult> projector)
+        {
+            TResult[] results = new TResult[size];
+            for (int i = 0; i < size; i++)
+            {
+                results[i] = projector(items[i]);
+            }
+            return results;
+        }
+
+        public TResult[] OfType<TResult>()
+        {
+            TResult[] new_array = new TResult[size];
+            int index = 0;
+            for (int i = 0; i < size; i++)
+            {
+                if (items[i] is TResult tres)
+                {
+                    new_array[index] = tres;
+                    index++;
+                }
+            }
+            Array.Resize(ref new_array, index);
+            return new_array;
+        }
+
+        public T[] Take(int start_index, int count)
+        {
+            int last_index = start_index + count;
+            if (last_index > size)
+            {
+                last_index = size;
+            }
+            T[] new_array = new T[size];
+            int index = 0;
+            for (int i = start_index; i < last_index; i++)
+            {
+                new_array[index] = items[i];
+                index++;
+            }
+            Array.Resize(ref new_array, index);
+            return new_array;
         }
     }
 }

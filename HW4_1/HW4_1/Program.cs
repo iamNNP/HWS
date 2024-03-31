@@ -14,16 +14,31 @@ namespace HW3_4
             {
                 single_array.Add(rnd.Next(1, 100));
             }
-            single_array.ForEach((x) => Console.WriteLine(x));
-            Console.WriteLine(single_array.All((x) => x >= 5));
-            int[] array = single_array.Where((x) => x >= 25);
-            foreach (int n in array)
+            Console.Write("Int single array: ");
+            single_array.ForEach((x) => Console.Write(x + " "));
+            Console.WriteLine();
+            Console.WriteLine($"Min: {single_array.Min()}");
+            Console.WriteLine($"Max: {single_array.Max()}");
+            Console.Write("Sorted array: ");
+            single_array.Sort();
+            single_array.ForEach((x) => Console.Write(x + " "));
+            Console.WriteLine();
+
+            SingleArray<double> single_array1 = new SingleArray<double>(0);
+            for (int i = 0; i < 11; i++)
             {
-                Console.WriteLine(n);
+                double to_add = rnd.Next(1, 100) + rnd.NextDouble();
+                single_array1.Add(to_add);
             }
-            single_array.Reverse();
-            single_array.ForEach((x) => Console.WriteLine(x));
-            Console.WriteLine(single_array.Min());
+            Console.Write("Double single array: ");
+            single_array1.ForEach((x) => Console.Write(x + " "));
+            Console.WriteLine();
+            Console.WriteLine($"Min: {single_array1.Min()}");
+            Console.WriteLine($"Max: {single_array1.Max()}");
+            Console.Write("Sorted array: ");
+            single_array1.Sort();
+            single_array1.ForEach((x) => Console.Write(x + " "));
+            Console.WriteLine();
             Console.Write("Press enter to exit: ");
             Console.ReadLine();
         }
