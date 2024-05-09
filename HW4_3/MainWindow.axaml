@@ -1,0 +1,108 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Width="1055"
+        Height="650"
+        x:Class="HW4_3.MainWindow"
+        Title="ContainersAndDesign"
+        CanResize="False">
+
+	<Window.Styles>
+		<Style Selector="TextBlock">
+			<Setter Property="Margin" Value="10"></Setter>
+			<Setter Property="Foreground" Value="Black"></Setter>
+			<Setter Property="FontWeight" Value="Medium"></Setter>
+		</Style>
+	</Window.Styles>
+
+
+	<Grid RowDefinitions="auto, *"
+		  ColumnDefinitions="*, auto">
+
+		<Border Grid.Row="0"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				BorderBrush="Black"
+				BorderThickness="1"
+				Margin="0 0 0 10">
+			<DockPanel>
+				<TextBlock>Home</TextBlock>
+				<TextBlock>About</TextBlock>
+				<TextBlock>Blog's Main Topic 1</TextBlock>
+				<TextBlock>Blog's Main Topic 2</TextBlock>
+				<TextBlock>Blog's Main Topic 3</TextBlock>
+				<TextBlock>Associated blogs</TextBlock>
+				<TextBlock DockPanel.Dock="Right"
+						   TextAlignment="Right">
+					RSS
+				</TextBlock>
+			</DockPanel>
+		</Border>
+
+		<Border	Grid.Row="1"
+				BorderBrush="#bbbdbb"
+				BorderThickness="1"
+				Margin="0 10 5 10">
+			<StackPanel Orientation="Vertical">
+				<TextBlock>Article 1</TextBlock>
+				<TextBlock Margin="10 10 10 0"
+						   TextWrapping="Wrap">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</TextBlock>
+				<TextBlock Margin="10 0 10 10"
+						   TextWrapping="Wrap">
+					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+				</TextBlock>
+				<Image Source="C:\Users\Александр\source\repos\HWS\HW4_3\Assets\photo.jpg"
+					   Height="273"
+					   Width="495"
+					   HorizontalAlignment="Center">
+				</Image>
+				<DockPanel VerticalAlignment="Bottom">
+					<TextBlock>Tags:</TextBlock>
+					<TextBlock>Tag 1</TextBlock>
+					<TextBlock>Tag 2</TextBlock>
+					<TextBlock>Tag 3</TextBlock>
+					<TextBlock>Tag 4</TextBlock>
+					<TextBlock DockPanel.Dock="Right"
+							   TextAlignment="Right">
+						4/5
+					</TextBlock>
+					<TextBlock DockPanel.Dock="Right"
+							   TextAlignment="Right">
+						Rate this article:
+					</TextBlock>
+				</DockPanel>
+			</StackPanel>
+		</Border>
+
+		<Border	Grid.Row="1"
+				Grid.Column="1"
+				BorderBrush="#bbbdbb"
+				BorderThickness="1"
+				Margin="5 10 0 10">
+			<StackPanel Orientation="Vertical"
+						Width="263">
+				<TextBlock></TextBlock>
+				<TextBlock TextWrapping="Wrap">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ...
+				</TextBlock>
+				<TextBlock TextAlignment="Right"
+						   TextDecorations="Underline">
+					More
+				</TextBlock>
+				<TextBlock TextAlignment="Right">Yesterday</TextBlock>
+				<TextBlock TextWrapping="Wrap">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ...
+				</TextBlock>
+				<TextBlock TextAlignment="Right"
+						   TextDecorations="Underline">
+					More
+				</TextBlock>
+				<TextBlock TextAlignment="Right">1 week ago</TextBlock>
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>
