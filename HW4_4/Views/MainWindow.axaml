@@ -1,0 +1,108 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:HW4_4.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="HW4_4.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="HW4_4">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Window.Styles>
+		<Style Selector="TextBlock">
+			<Setter Property="Margin" Value="10"></Setter>
+			<Setter Property="Foreground" Value="Black"></Setter>
+			<Setter Property="FontWeight" Value="Medium"></Setter>
+		</Style>
+	</Window.Styles>
+
+	<Grid RowDefinitions="auto, *"
+		  ColumnDefinitions="*, auto">
+
+		<Border Grid.Row="0"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				BorderBrush="Black"
+				BorderThickness="1"
+				Margin="0 0 0 10">
+			<DockPanel>
+				<TextBlock>Home</TextBlock>
+				<TextBlock>About</TextBlock>
+				<TextBlock>Blog's Main Topic 1</TextBlock>
+				<TextBlock>Blog's Main Topic 2</TextBlock>
+				<TextBlock>Blog's Main Topic 3</TextBlock>
+				<TextBlock>Associated blogs</TextBlock>
+				<TextBlock DockPanel.Dock="Right"
+						   TextAlignment="Right">
+					RSS
+				</TextBlock>
+			</DockPanel>
+		</Border>
+
+		<Border	Grid.Row="1"
+				BorderBrush="#bbbdbb"
+				BorderThickness="1"
+				Margin="0 10 5 10">
+			<StackPanel Orientation="Vertical">
+				<TextBlock Text="{Binding BlogEntity.Article}"/>
+				<TextBlock Margin="10 10 10 0"
+						   TextWrapping="Wrap"
+						   Text="{Binding BlogEntity.Paragraphs[0]}"/>
+				<TextBlock Margin="10 10 10 0"
+						   TextWrapping="Wrap"
+						   Text="{Binding BlogEntity.Paragraphs[1]}"/>
+				<Image Source="C:\Users\Александр\source\repos\HWS\HW4_4\Assets\photo.jpg"
+					   Height="273"
+					   Width="495"
+					   HorizontalAlignment="Center"/>
+				<DockPanel VerticalAlignment="Bottom">
+					<TextBlock>Tags:</TextBlock>
+					<TextBlock Text="{Binding BlogEntity.Tags[0]}"/>
+					<TextBlock Text="{Binding BlogEntity.Tags[1]}"/>
+					<TextBlock Text="{Binding BlogEntity.Tags[2]}"/>
+					<TextBlock Text="{Binding BlogEntity.Tags[3]}"/>
+					<TextBlock DockPanel.Dock="Right"
+							   TextAlignment="Right">
+						4/5
+					</TextBlock>
+					<TextBlock DockPanel.Dock="Right"
+							   TextAlignment="Right">
+						Rate this article:
+					</TextBlock>
+				</DockPanel>
+			</StackPanel>
+		</Border>
+
+		<Border	Grid.Row="1"
+				Grid.Column="1"
+				BorderBrush="#bbbdbb"
+				BorderThickness="1"
+				Margin="5 10 0 10">
+			<StackPanel Orientation="Vertical"
+						Width="263">
+				<TextBlock></TextBlock>
+				<TextBlock TextWrapping="Wrap"
+						   Text="{Binding NewsEntities[0].Text}"/>
+				<TextBlock TextAlignment="Right"
+						   TextDecorations="Underline">
+					More
+				</TextBlock>
+				<TextBlock TextAlignment="Right"
+						   Text="{Binding NewsEntities[0].PublishDate}"/>
+				<TextBlock TextWrapping="Wrap"
+						   Text="{Binding NewsEntities[1].Text}"/>
+				<TextBlock TextAlignment="Right"
+						   TextDecorations="Underline">
+					More
+				</TextBlock>
+				<TextBlock TextAlignment="Right"
+						   Text="{Binding NewsEntities[0].PublishDate}"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>
